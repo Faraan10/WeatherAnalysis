@@ -1,0 +1,54 @@
+<!--
+    html
+    JavaScript
+    fetch onclick
+
+    and a weather API (application program interface)
+    api key: acae6e44efe7121fd09b75f7a8cf90fa
+ 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Analysis</title>
+    <link rel="stylesheet" type="text/css" href="weatheranalysis.css">
+</head>
+<body>
+    <div class="bgimg"><br/>
+    <h1 class="headone">Weather checking site </h1>
+    <form id="form">
+    <input type="text" id="input" placeholder="Enter a city">
+    <button class="submitbutton">Submit</button>
+    </form>
+    <p id="cities"></p>
+</body>
+    <script>
+        const form=document.getElementById("form");
+        const input=document.getElementById("input");
+        const info=document.getElementById("cities");
+        const apikey="acae6e44efe7121fd09b75f7a8cf90fa";
+        form.addEventListener("submit",e=>{
+            e.preventDefault();
+            info.textContent="";
+            const inputValue=input.value;
+            const url=`https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${apikey}&units=metric`;
+            fetch(url)
+            .then(response=>response.json())
+            .then(data=>{
+                const {main,name,sys}=data;
+                const para=document.createElement("p");
+                para.classList.add("city");
+                const out=`<p>City:${name}</p>
+                           <div>Temperature is:${Math.round(main.temp)}<sup>0C</sup></div>`;
+                para.innerHTML=out;
+                info.appendChild(para);
+            }).catch(()=>{
+                alert("Please enter a valid city name");
+            })
+            form.reset();
+        })
+    </script>
+</html>

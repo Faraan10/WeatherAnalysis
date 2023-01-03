@@ -1,0 +1,22 @@
+.bgimg{
+    background-image: url("https://img.freepik.com/premium-photo/beautiful-blue-sky-clouds-weather-day-outdoor-nature-environment-abstract-background_25250-803.jpg?w=2000");
+    background-size:cover;
+    height:97vh;
+}
+.headone{
+    margin-left:5px;
+}
+#form{
+    margin-left:5px;
+}
+#input{
+    border-radius:5px;
+    border:none;
+    padding:5px;
+}
+.submitbutton{
+    padding:5px;
+    border-radius:5px;
+    border:none;
+    margin-left:10px;
+}
